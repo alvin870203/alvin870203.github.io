@@ -117,23 +117,27 @@
         .entry-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 12px;
             margin-bottom: 4px;
         }
 
         .entry-title {
             font-weight: 600;
+            flex: 1;
+            min-width: 0;
         }
 
         .entry-date {
             color: var(--text-secondary);
             font-size: 0.9rem;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .entry-details {
             margin-left: 24px;
+            margin-right: 90px;
             font-size: 0.95rem;
             color: var(--text-secondary);
         }
@@ -160,7 +164,7 @@
         .talk-item {
             display: flex;
             gap: 20px;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 16px;
         }
 
@@ -190,7 +194,7 @@
             margin-bottom: 28px;
             display: flex;
             gap: 20px;
-            align-items: flex-start;
+            align-items: center;
             background: var(--card-bg);
             padding: 20px;
             border-radius: 12px;
@@ -269,6 +273,47 @@
             text-decoration: underline;
         }
 
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--bg);
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lang-toggle .active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        [data-lang-en] { display: none; }
+        [data-lang-zh] { display: inline; }
+        html[lang="en"] [data-lang-en] { display: inline; }
+        html[lang="en"] [data-lang-zh] { display: none; }
+        html[lang="en"] .entry-details [data-lang-en],
+        html[lang="en"] .project-desc[data-lang-en],
+        html[lang="en"] .project-simple .project-desc[data-lang-en] { display: block; }
+        .entry-details [data-lang-en],
+        .project-desc[data-lang-en],
+        .project-simple .project-desc[data-lang-en] { display: none; }
+        html[lang="en"] .entry-details [data-lang-zh],
+        html[lang="en"] .project-desc[data-lang-zh],
+        html[lang="en"] .project-simple .project-desc[data-lang-zh] { display: none; }
+        .entry-details [data-lang-zh],
+        .project-desc[data-lang-zh],
+        .project-simple .project-desc[data-lang-zh] { display: block; }
+
         @media (max-width: 600px) {
             body {
                 padding: 40px 16px;
@@ -296,6 +341,10 @@
             .entry-header {
                 flex-direction: column;
                 gap: 2px;
+            }
+
+            .entry-details {
+                margin-right: 0;
             }
 
             .project {
@@ -344,87 +393,107 @@
             <a href="https://orcid.org/0000-0002-1790-8707" target="_blank" title="ORCID">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
             </a>
+            <button class="lang-toggle" onclick="toggleLanguage()" title="Switch Language">
+                <span id="lang-zh">中</span>
+                <span>/</span>
+                <span id="lang-en">EN</span>
+            </button>
             </div>
         </div>
     </header>
 
     <section id="education">
-        <h2>學歷</h2>
+        <h2><span data-lang-zh>學歷</span><span data-lang-en>Education</span></h2>
 
         <div class="entry">
             <div class="entry-header">
-                <span class="entry-title">碩士：國立台灣大學 電機工程學系</span>
+                <span class="entry-title"><span data-lang-zh>碩士：國立台灣大學 電機工程學系</span><span data-lang-en>Master, Department of Electrical Engineering, National Taiwan University</span></span>
                 <span class="entry-date">(2021~2022)</span>
             </div>
             <div class="entry-details">
-                <p>GPA：4.02</p>
-                <p>指導教授：傅立成</p>
-                <p>畢業論文：透過語言、語音和視覺之多模態線索評估思覺失調之症狀嚴重程度</p>
+                <p data-lang-zh>GPA：4.02</p>
+                <p data-lang-en>GPA: 4.02</p>
+                <p data-lang-zh>指導教授：傅立成</p>
+                <p data-lang-en>Advisor: Professor Li-Chen Fu</p>
+                <p data-lang-zh>畢業論文：透過語言、語音和視覺之多模態線索評估思覺失調之症狀嚴重程度</p>
+                <p data-lang-en>Master Thesis: Multimodal Assessment of Schizophrenia Symptoms Severity from Linguistic, Acoustic and Visual Cues</p>
             </div>
         </div>
 
         <div class="entry">
             <div class="entry-header">
-                <span class="entry-title">學士：國立清華大學 動力機械工程學系</span>
+                <span class="entry-title"><span data-lang-zh>學士：國立清華大學 動力機械工程學系</span><span data-lang-en>Bachelor, Department of Power Mechanical Engineering, National Tsing Hua University</span></span>
                 <span class="entry-date">(2016~2020)</span>
             </div>
             <div class="entry-details">
-                <p>GPA：4.02</p>
-                <p>指導教授：方維倫</p>
-                <p>畢業專題：垂直整合三軸近接與觸覺感測之微機電系統</p>
+                <p data-lang-zh>GPA：4.02</p>
+                <p data-lang-en>GPA: 4.02</p>
+                <p data-lang-zh>指導教授：方維倫</p>
+                <p data-lang-en>Advisor: Professor Wei-Leun Fang</p>
+                <p data-lang-zh>畢業專題：垂直整合三軸近接與觸覺感測之微機電系統</p>
+                <p data-lang-en>Graduation Project: Monolithic/Vertical Integration of Tri-Axial Inductive Proximity Sensor and Piezo-Resistive Tactile Sensor Using CMOS-MEMS Technology</p>
             </div>
         </div>
 
         <div class="entry">
             <div class="entry-header">
-                <span class="entry-title">高中：國立臺灣師範大學附屬高級中學</span>
+                <span class="entry-title"><span data-lang-zh>高中：國立臺灣師範大學附屬高級中學</span><span data-lang-en>The Affiliated Senior High School of National Taiwan Normal University</span></span>
                 <span class="entry-date">(2013~2015)</span>
             </div>
         </div>
     </section>
 
     <section id="experience">
-        <h2>工作經歷</h2>
+        <h2><span data-lang-zh>工作經歷</span><span data-lang-en>Work Experience</span></h2>
 
         <div class="entry">
             <div class="entry-header">
-                <span class="entry-title">光寶科技 車用視覺軟體部門 演算法團隊負責人</span>
+                <span class="entry-title"><span data-lang-zh>光寶科技 車用視覺軟體部門 演算法團隊負責人</span><span data-lang-en>LITEON - Algorithm Team Lead, Automotive Vision Software Department</span></span>
                 <span class="entry-date">(2024~Present)</span>
             </div>
             <div class="entry-details">
-                <p>帶領六人團隊開發多項創新車用視覺感知演算法</p>
-                <p>主持與清大/交大/成大的產學合作案</p>
-                <p>至歐美日向國際車廠進行技術拓展</p>
-                <p>申請並獲頒 <a href="https://www.ces.tech/ces-innovation-awards/2026/hazard-awareness/" target="_blank">CES 2026 Innovation Award 🏆</a></p>
+                <p data-lang-zh>帶領六人團隊開發多項創新車用視覺感知演算法</p>
+                <p data-lang-en>Led a team to develop various innovative automotive visual perception algorithms</p>
+                <p data-lang-zh>主持與清大/交大/成大的產學合作案</p>
+                <p data-lang-en>Directed industry-academia collaboration projects with NTHU, NYCU, and NCKU</p>
+                <p data-lang-zh>至歐美日向國際車廠進行技術拓展</p>
+                <p data-lang-en>Expanded technology outreach to international automakers in Europe, the US, and Japan</p>
+                <p data-lang-zh>申請並獲頒 <a href="https://www.ces.tech/ces-innovation-awards/2026/hazard-awareness/" target="_blank">CES 2026 Innovation Award 🏆</a></p>
+                <p data-lang-en>Applied for and received the <a href="https://www.ces.tech/ces-innovation-awards/2026/hazard-awareness/" target="_blank">CES 2026 Innovation Award 🏆</a></p>
             </div>
         </div>
 
         <div class="entry">
             <div class="entry-header">
-                <span class="entry-title">光寶科技 車用視覺軟體部門 機器學習研究員</span>
+                <span class="entry-title"><span data-lang-zh>光寶科技 車用視覺軟體部門 機器學習研究員</span><span data-lang-en>LITEON - Machine Learning Researcher, Automotive Vision Software Department</span></span>
                 <span class="entry-date">(2022~2024)</span>
             </div>
             <div class="entry-details">
-                <p>開發透過車內外鏡頭偵測車周及駕駛的深度學習模型</p>
-                <p>規劃實車資料收集的軟硬體設計</p>
-                <p>輕量化並部署深度學習模型至車用嵌入式系統</p>
+                <p data-lang-zh>開發透過車內外鏡頭偵測車周及駕駛的深度學習模型</p>
+                <p data-lang-en>Developed deep learning models for driver and surround view monitoring using in-cabin and exterior cameras</p>
+                <p data-lang-zh>規劃實車資料收集的軟硬體設計</p>
+                <p data-lang-en>Planned the hardware and software design for real-vehicle data collection</p>
+                <p data-lang-zh>輕量化並部署深度學習模型至車用嵌入式系統</p>
+                <p data-lang-en>Lightweighted and deployed deep learning models to automotive embedded systems</p>
             </div>
         </div>
 
         <div class="entry">
             <div class="entry-header">
-                <span class="entry-title">光寶科技 海外暑期實習專案 自動控制工程師</span>
+                <span class="entry-title"><span data-lang-zh>光寶科技 海外暑期實習專案 自動控制工程師</span><span data-lang-en>LITEON - Automatic Control Engineer, Overseas Summer Internship Project</span></span>
                 <span class="entry-date">(2018~2018)</span>
             </div>
             <div class="entry-details">
-                <p>設計用於檢測鍵盤力學觸感的自動化機台</p>
-                <p>改善用於自動化鍵盤組裝的六軸機械手臂</p>
+                <p data-lang-zh>設計用於檢測鍵盤力學觸感的自動化機台</p>
+                <p data-lang-en>Designed an automated machine for testing the mechanical tactile feel of keyboards</p>
+                <p data-lang-zh>改善用於自動化鍵盤組裝的六軸機械手臂</p>
+                <p data-lang-en>Improved a 6-axis robotic arm used for automated keyboard assembly</p>
             </div>
         </div>
     </section>
 
     <section id="publications">
-        <h2>論文發表</h2>
+        <h2><span data-lang-zh>論文發表</span><span data-lang-en>Publications</span></h2>
 
         <div class="publication">
             [1] H. R. Liao, H. C. Chen, <strong>C. Y. Chuang</strong>, J. S. Chen, V. M. Shivanna, and J. I. Guo, "A semi-supervised instance segmentation training model based on refined model distillation framework," <em>IEEE Access</em>, under review, 2026.
@@ -444,7 +513,7 @@
     </section>
 
     <section id="patents">
-        <h2>專利</h2>
+        <h2><span data-lang-zh>專利</span><span data-lang-en>Patents</span></h2>
 
         <div class="publication">
             [1] T. C. Liu, <strong>C. Y. Chuang</strong>, C. N. Hsu, and J. S. Chen, "深度估計系統及其方法", <em>Taiwan Patent TWI915224B</em>, granted Feb. 11, 2026.
@@ -468,7 +537,7 @@
     </section>
 
     <section id="talks">
-        <h2>演講</h2>
+        <h2><span data-lang-zh>演講</span><span data-lang-en>Talks</span></h2>
 
         <div class="talk-item">
             <a href="https://www.youtube.com/watch?v=j031qckY8BU" target="_blank" class="talk-thumb">
@@ -481,187 +550,249 @@
     </section>
 
     <section id="projects">
-        <h2>專案</h2>
+        <h2><span data-lang-zh>專案</span><span data-lang-en>Projects</span></h2>
 
         <div class="project">
             <div class="project-img"><img src="assets/images/multimodal-assessment.png" alt="Multimodal schizophrenia assessment"></div>
             <div class="project-content">
-                <div class="project-title">透過語言、語音和視覺之多模態線索評估思覺失調之症狀嚴重程度</div>
-                <div class="project-desc">本研究設計了一個透過 parameter-efficient fine-tuning 模組融合四個不同模態預訓練 Transformer 的框架，訓練在與台大醫院合作收集的患者會談影音，透過語意、語法、聲學、視覺表徵檢測其在各症狀量表之嚴重指數</div>
+                <div class="project-title"><span data-lang-zh>透過語言、語音和視覺之多模態線索評估思覺失調之症狀嚴重程度</span><span data-lang-en>Multimodal Assessment of Schizophrenia Symptoms Severity from Linguistic, Acoustic and Visual Cues</span></div>
+                <div class="project-desc" data-lang-zh>本研究設計了一個透過 parameter-efficient fine-tuning 模組融合四個不同模態預訓練 Transformer 的框架，訓練在與台大醫院合作收集的患者會談影音，透過語意、語法、聲學、視覺表徵檢測其在各症狀量表之嚴重指數</div>
+                <div class="project-desc" data-lang-en>Designed a framework fusing four pre-trained Transformer models of different modalities via parameter-efficient fine-tuning modules. Trained on psychiatric interview audiovisuals collected in collaboration with National Taiwan University Hospital to detect symptom severity scales through semantic, syntactic, acoustic, and visual representations.</div>
             </div>
         </div>
 
         <div class="project">
             <div class="project-img"><img src="assets/images/mems-sensor.png" alt="MEMS sensor"></div>
             <div class="project-content">
-                <div class="project-title">垂直整合三軸近接與觸覺感測之微機電系統</div>
-                <div class="project-desc">本研究利用 CMOS-MEMS 技術，設計 2×2 感應線圈陣列以實現三軸近接感測，並整合壓阻式電橋結構以進行觸覺力感測，達到單片垂直整合，縮小晶片面積，並下線台積電製程製造</div>
+                <div class="project-title"><span data-lang-zh>垂直整合三軸近接與觸覺感測之微機電系統</span><span data-lang-en>Monolithic/Vertical Integration of Tri-Axial Inductive Proximity Sensor and Piezo-Resistive Tactile Sensor Using CMOS-MEMS Technology</span></div>
+                <div class="project-desc" data-lang-zh>本研究利用 CMOS-MEMS 技術，設計 2×2 感應線圈陣列以實現三軸近接感測，並整合壓阻式電橋結構以進行觸覺力感測，達到單片垂直整合，縮小晶片面積，並下線台積電製程製造</div>
+                <div class="project-desc" data-lang-en>Utilized CMOS-MEMS technology to design a 2×2 induction coil array for 3-axis proximity sensing, integrating a piezoresistive bridge structure for tactile force sensing. Achieved single-chip vertical integration, minimized chip area, and taped out via TSMC process.</div>
             </div>
         </div>
 
         <div class="project">
             <div class="project-img"><img src="assets/images/surround-segmentation.png" alt="Surround view segmentation"></div>
             <div class="project-content">
-                <div class="project-title">具有自我學習能力之環景影像物件分割系統</div>
-                <div class="project-desc">本研究透過自監督學習、圖資區域自動篩選與 Segment Anything 知識蒸餾技術，設計出一個半監督式車用魚眼影像分割模型，解決資料標注稀少、邊緣小物件難以捕捉與遮罩破碎等挑戰</div>
+                <div class="project-title"><span data-lang-zh>具有自我學習能力之環景影像物件分割系統</span><span data-lang-en>Self-Learning Surround View Instance Segmentation System</span></div>
+                <div class="project-desc" data-lang-zh>本研究透過自監督學習、圖資區域自動篩選與 Segment Anything 知識蒸餾技術，設計出一個半監督式車用魚眼影像分割模型，解決資料標注稀少、邊緣小物件難以捕捉與遮罩破碎等挑戰</div>
+                <div class="project-desc" data-lang-en>Designed a semi-supervised automotive fisheye image segmentation model using self-supervised learning, automatic region selection, and Segment Anything knowledge distillation. Addressed challenges of sparse data annotation, difficulty in capturing small edge objects, and fragmented masks.</div>
             </div>
         </div>
 
         <div class="project">
             <div class="project-img"><img src="assets/images/stereo-depth.png" alt="Heterogeneous stereo depth"></div>
             <div class="project-content">
-                <div class="project-title">異質雙目視覺深度估測系統</div>
-                <div class="project-desc">本研究開發了一款透過兩顆任意安裝位置且不同光學規格與色域的鏡頭，達到立體視覺深度估測的演算法，例如魚眼RGB鏡頭與一顆紅外線鏡頭，解除傳統方法對於相機共平面且同規格的限制</div>
+                <div class="project-title"><span data-lang-zh>異質雙目視覺深度估測系統</span><span data-lang-en>Heterogeneous Dual Camera Depth Estimation System</span></div>
+                <div class="project-desc" data-lang-zh>本研究開發了一款透過兩顆任意安裝位置且不同光學規格與色域的鏡頭，達到立體視覺深度估測的演算法，例如魚眼RGB鏡頭與一顆紅外線鏡頭，解除傳統方法對於相機共平面且同規格的限制</div>
+                <div class="project-desc" data-lang-en>Developed an algorithm achieving stereo vision depth estimation via two cameras with arbitrary installation positions, different optical specifications, and color spaces (e.g., a fisheye RGB camera and an IR camera), breaking traditional limitations of coplanar and identical cameras.</div>
             </div>
         </div>
 
         <div class="project">
             <div class="project-img"><img src="assets/images/driver-awareness.png" alt="Driver awareness system"></div>
             <div class="project-content">
-                <div class="project-title">基於車內外鏡頭之駕駛危險意識感知系統</div>
-                <div class="project-desc">本研究透過車內鏡頭偵測駕駛視線，結合車外環景鏡頭偵測周遭用路人碰撞風險，並追蹤時間軸資訊，判斷駕駛對車周危險的意識程度，以此減少先進駕駛輔助的誤作動與對於全場景的理解</div>
+                <div class="project-title"><span data-lang-zh>基於車內外鏡頭之駕駛危險意識感知系統</span><span data-lang-en>Driver Hazard Awareness Perception System</span></div>
+                <div class="project-desc" data-lang-zh>本研究透過車內鏡頭偵測駕駛視線，結合車外環景鏡頭偵測周遭用路人碰撞風險，並追蹤時間軸資訊，判斷駕駛對車周危險的意識程度，以此減少先進駕駛輔助的誤作動與對於全場景的理解</div>
+                <div class="project-desc" data-lang-en>Detected driver gaze via in-cabin cameras and collision risks from surrounding road users via exterior surround-view cameras. Tracked temporal information to determine the driver's hazard awareness level, reducing ADAS false alarms and improving full-scene understanding.</div>
             </div>
         </div>
 
         <div class="project">
             <div class="project-img"><img src="assets/images/heart-rate.png" alt="Remote heart rate detection"></div>
             <div class="project-content">
-                <div class="project-title">基於電腦視覺之遠距駕駛心律偵測與分析</div>
-                <div class="project-desc">​本研究透過車內鏡頭偵測駕駛心率的深度學習模型，設計利用 test-time compute 克服雜訊，並優化多模態架構，使同一模型可適用於僅有 RGB 或 NIR 或 RGB-IR 雙模態的各種鏡頭組合</div>
+                <div class="project-title"><span data-lang-zh>基於電腦視覺之遠距駕駛心律偵測與分析</span><span data-lang-en>Vision-Based Remote Driver Heart Rate Detection and Analysis</span></div>
+                <div class="project-desc" data-lang-zh>​本研究透過車內鏡頭偵測駕駛心率的深度學習模型，設計利用 test-time compute 克服雜訊，並優化多模態架構，使同一模型可適用於僅有 RGB 或 NIR 或 RGB-IR 雙模態的各種鏡頭組合</div>
+                <div class="project-desc" data-lang-en>Designed a deep learning model to detect driver heart rates via in-cabin cameras. Utilized test-time compute to overcome noise and optimized the multimodal architecture to make a single model compatible with any camera combination: RGB-only, NIR-only, or RGB-IR dual-modality.</div>
             </div>
         </div>
 
         <div class="project-simple-grid">
             <div class="project-simple">
-                <div class="project-title">具有自我學習能力之駕駛行為偵測系統</div>
-                <div class="project-desc">本研究透過優化 Teacher-Student 架構的半監督訓練框架，並整合擴散模型生成影像進行資料擴充，解決紅外線駕駛行為影像中長尾分佈與異常類別樣本稀缺之挑戰</div>
+                <div class="project-title"><span data-lang-zh>具有自我學習能力之駕駛行為偵測系統</span><span data-lang-en>Self-Learning Driver Behavior Detection System</span></div>
+                <div class="project-desc" data-lang-zh>本研究透過優化 Teacher-Student 架構的半監督訓練框架，並整合擴散模型生成影像進行資料擴充，解決紅外線駕駛行為影像中長尾分佈與異常類別樣本稀缺之挑戰</div>
+                <div class="project-desc" data-lang-en>Optimized a semi-supervised training framework with a Teacher-Student architecture and integrated diffusion models to generate images for data augmentation. Addressed challenges of long-tail distribution and scarcity of abnormal class samples in infrared driver behavior images.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">基於近紅外線影像之高精度駕駛視線偵測</div>
-                <div class="project-desc">本研究以車內 NIR 鏡頭進行端到端駕駛視線估測，克服傳統視線估測因多階段前處理導致的累積誤差與高運算複雜度</div>
+                <div class="project-title"><span data-lang-zh>基於近紅外線影像之高精度駕駛視線偵測</span><span data-lang-en>High-Precision Driver Gaze Estimation via Near-Infrared Images</span></div>
+                <div class="project-desc" data-lang-zh>本研究以車內 NIR 鏡頭進行端到端駕駛視線估測，克服傳統視線估測因多階段前處理導致的累積誤差與高運算複雜度</div>
+                <div class="project-desc" data-lang-en>Performed end-to-end driver gaze estimation using in-cabin NIR cameras, overcoming cumulative errors and high computational complexity caused by multi-stage preprocessing in traditional gaze estimation methods.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">車周多鏡頭相機姿態自動校正系統</div>
-                <div class="project-desc">本研究透過純影像來自動校正車上所安裝的多顆鏡頭之位置及角度，以補償鏡頭因碰撞或震動而跑位之問題</div>
+                <div class="project-title"><span data-lang-zh>車周多鏡頭相機姿態自動校正系統</span><span data-lang-en>Automatic Calibration for Around View Multi-Camera System</span></div>
+                <div class="project-desc" data-lang-zh>本研究透過純影像來自動校正車上所安裝的多顆鏡頭之位置及角度，以補償鏡頭因碰撞或震動而跑位之問題</div>
+                <div class="project-desc" data-lang-en>Automatically calibrated the positions and angles of multiple vehicle-mounted cameras using purely image-based methods, compensating for camera displacement caused by collisions or vibrations.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">魚眼鏡頭單目深度估測模型</div>
-                <div class="project-desc">本研究開發了一款能針對魚眼影像進行單目深度偵測的深度學習模型，且針對時間一致性與絕對深度優化</div>
+                <div class="project-title"><span data-lang-zh>魚眼鏡頭單目深度估測模型</span><span data-lang-en>Monocular Depth Estimation Model for Fisheye Cameras</span></div>
+                <div class="project-desc" data-lang-zh>本研究開發了一款能針對魚眼影像進行單目深度偵測的深度學習模型，且針對時間一致性與絕對深度優化</div>
+                <div class="project-desc" data-lang-en>Developed a deep learning model for monocular depth detection on fisheye images, optimized for temporal consistency and absolute depth.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">無鬼影之車周鏡頭環景影像縫合技術</div>
-                <div class="project-desc">本研究透過車上安裝的多顆鏡頭縫合出車周全景影像，且消除縫合處因視角差異導致同一物件產生之重疊殘影</div>
+                <div class="project-title"><span data-lang-zh>無鬼影之車周鏡頭環景影像縫合技術</span><span data-lang-en>Ghost-Less Surround View Image Stitching Technology</span></div>
+                <div class="project-desc" data-lang-zh>本研究透過車上安裝的多顆鏡頭縫合出車周全景影像，且消除縫合處因視角差異導致同一物件產生之重疊殘影</div>
+                <div class="project-desc" data-lang-en>Stitched panoramic images around the vehicle using multiple mounted cameras, eliminating overlapping ghosting artifacts of the same object caused by viewing angle differences at the seams.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">魚眼鏡頭髒汙檢測</div>
-                <div class="project-desc">本研究開發了一個能偵測車用魚眼鏡頭上之雨滴或泥污的輕量化電腦視覺演算法</div>
+                <div class="project-title"><span data-lang-zh>魚眼鏡頭髒汙檢測</span><span data-lang-en>Fisheye Camera Soiling Detection</span></div>
+                <div class="project-desc" data-lang-zh>本研究開發了一個能偵測車用魚眼鏡頭上之雨滴或泥污的輕量化電腦視覺演算法</div>
+                <div class="project-desc" data-lang-en>Developed a lightweight computer vision algorithm to detect raindrops or mud on automotive fisheye cameras.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">基於深度學習偵測電源供應器內部結構設計異常</div>
-                <div class="project-desc">結合 Design-for-X 知識 ，實現電源供應器內部結構異常的自動化檢測，克服樣本稀缺挑戰</div>
+                <div class="project-title"><span data-lang-zh>基於深度學習偵測電源供應器內部結構設計異常</span><span data-lang-en>Anomaly Detection for Internal Structure Design of Power Supplies</span></div>
+                <div class="project-desc" data-lang-zh>結合 Design-for-X 知識 ，實現電源供應器內部結構異常的自動化檢測，克服樣本稀缺挑戰</div>
+                <div class="project-desc" data-lang-en>Combined Design-for-X knowledge to realize automated detection of internal structure anomalies in power supplies PCBA, overcoming the challenge of sample scarcity.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">用於鍵盤測試的自動化觸覺檢測系統</div>
-                <div class="project-desc">開發自動化高通量的力學檢測機台，量測鍵盤所有按鈕組裝後的手感，免去人工品檢</div>
+                <div class="project-title"><span data-lang-zh>用於鍵盤測試的自動化觸覺檢測系統</span><span data-lang-en>Automated Tactile Sensing System for Keyboard Testing</span></div>
+                <div class="project-desc" data-lang-zh>開發自動化高通量的力學檢測機台，量測鍵盤所有按鈕組裝後的手感，免去人工品檢</div>
+                <div class="project-desc" data-lang-en>Developed an automated, high-throughput mechanical testing machine to measure the tactile feel of every assembled keyboard button, eliminating the need for manual quality inspection.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">直流馬達之最佳狀態空間控制</div>
-                <div class="project-desc">實作直流馬達狀態空間與積分控制，進行系統鑑別，並解決非線性及模型誤差挑戰</div>
+                <div class="project-title"><span data-lang-zh>直流馬達之最佳狀態空間控制</span><span data-lang-en>Optimal State-Space Control of DC Motor</span></div>
+                <div class="project-desc" data-lang-zh>實作直流馬達狀態空間與積分控制，進行系統鑑別，並解決非線性及模型誤差挑戰</div>
+                <div class="project-desc" data-lang-en>Implemented state-space and integral control for DC motors, performed system identification, and resolved nonlinear and model error challenges.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">AI 情緒辨識 Android App</div>
-                <div class="project-desc">利用 TinyML 技術，使人臉情緒辨識模型能運行在行動裝置上，兼具計算效率與準確度</div>
+                <div class="project-title"><span data-lang-zh>AI 情緒辨識 Android App</span><span data-lang-en>AI Emotion Recognition Android App</span></div>
+                <div class="project-desc" data-lang-zh>利用 TinyML 技術，使人臉情緒辨識模型能運行在行動裝置上，兼具計算效率與準確度</div>
+                <div class="project-desc" data-lang-en>Leveraged TinyML technology to run facial emotion recognition models on mobile devices, achieving both computational efficiency and accuracy.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">禾聯 IoT 智慧家電結合 LINE 之解決方案</div>
-                <div class="project-desc">與禾聯合作，將 LINE 與智慧家庭結合，學習使用者習慣，實時自動監測與控制各家電</div>
+                <div class="project-title"><span data-lang-zh>禾聯 IoT 智慧家電結合 LINE 之解決方案</span><span data-lang-en>HERAN IoT Smart Home Appliances Integrated with LINE Solution</span></div>
+                <div class="project-desc" data-lang-zh>與禾聯合作，將 LINE 與智慧家庭結合，學習使用者習慣，實時自動監測與控制各家電</div>
+                <div class="project-desc" data-lang-en>Collaborated with HERAN to integrate LINE with smart home devices, learning user habits and enable automatic control of various appliances in real-time.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">自駕車系統中介軟體開發</div>
-                <div class="project-desc">於台南沙崙智駕場域之虛擬平台，設計並訓練自駕車系統，以通過多項路況模擬實測</div>
+                <div class="project-title"><span data-lang-zh>自駕車系統中介軟體開發</span><span data-lang-en>Autonomous Vehicle System Middleware Development</span></div>
+                <div class="project-desc" data-lang-zh>於台南沙崙智駕場域之虛擬平台，設計並訓練自駕車系統，以通過多項路況模擬實測</div>
+                <div class="project-desc" data-lang-en>Designed and trained an autonomous vehicle system on a virtual platform in the Tainan Shalun Autonomous Vehicle Test Field to pass multiple road condition simulation tests.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">跨源域少樣本深度學習技術</div>
-                <div class="project-desc">結合少樣本學習技術與 metric learning，提升影像辨識在少量資料訓練下的跨域泛化性能</div>
+                <div class="project-title"><span data-lang-zh>跨源域少樣本深度學習技術</span><span data-lang-en>Cross-Domain Few-Shot Deep Learning Technology</span></div>
+                <div class="project-desc" data-lang-zh>結合少樣本學習技術與 metric learning，提升影像辨識在少量資料訓練下的跨域泛化性能</div>
+                <div class="project-desc" data-lang-en>Combined few-shot learning and metric learning to improve the cross-domain generalization performance of image recognition models trained with limited data.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">提升 Vision Transformer 準確度與收斂速度</div>
-                <div class="project-desc">優化 ViT 訓練方法，整合多任務預測、metric learning 與 SAM，改善準確度與收斂時間</div>
+                <div class="project-title"><span data-lang-zh>提升 Vision Transformer 準確度與收斂速度</span><span data-lang-en>Enhancing Vision Transformer Accuracy and Convergence Speed</span></div>
+                <div class="project-desc" data-lang-zh>優化 ViT 訓練方法，整合多任務預測、metric learning 與 SAM，改善準確度與收斂時間</div>
+                <div class="project-desc" data-lang-en>Optimized ViT training methods by integrating multi-task prediction, metric learning, and SAM optimizer to improve accuracy and convergence time.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">人臉識別於亞洲政治人物資料集</div>
-                <div class="project-desc">以 metric learning 優化人臉識別模型，訓練並測試在亞洲政治人物資料庫上，改善準確度</div>
+                <div class="project-title"><span data-lang-zh>人臉識別於亞洲政治人物資料集</span><span data-lang-en>Face Recognition on Asian Politician Dataset</span></div>
+                <div class="project-desc" data-lang-zh>以 metric learning 優化人臉識別模型，訓練並測試在亞洲政治人物資料庫上，改善準確度</div>
+                <div class="project-desc" data-lang-en>Optimized face recognition models using metric learning, trained and tested on the Asian Politician Dataset to improve accuracy.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">弈棋六軸機械手臂</div>
-                <div class="project-desc">設計演算法並控制達明公司的六軸機械手臂，使其能與人類對手自動下棋比賽</div>
+                <div class="project-title"><span data-lang-zh>弈棋六軸機械手臂</span><span data-lang-en>Chess-Playing 6-Axis Robotic Arm</span></div>
+                <div class="project-desc" data-lang-zh>設計演算法並控制達明公司的六軸機械手臂，使其能與人類對手自動下棋比賽</div>
+                <div class="project-desc" data-lang-en>Designed algorithms and controlled Techman Robot's 6-axis robotic arm to play chess automatically against human opponents.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">手勢辨識音樂撥放器於 STM32 微控制器</div>
-                <div class="project-desc">在 STM32 上，開發透過深度模型進行手勢辨識並可控制選單功能之音樂撥放器</div>
+                <div class="project-title"><span data-lang-zh>手勢辨識音樂撥放器於 STM32 微控制器</span><span data-lang-en>Music Player with Hand Gesture Control on STM32</span></div>
+                <div class="project-desc" data-lang-zh>在 STM32 上，開發透過深度模型進行手勢辨識並可控制選單功能之音樂撥放器</div>
+                <div class="project-desc" data-lang-en>Developed a music player on an STM32 microcontroller that uses deep learning models for hand gesture recognition to control menu functions.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">影像辨識之藍芽車 App</div>
-                <div class="project-desc">開發 Android App 以手機鏡頭進行物件辨識，並依此透過藍芽控制車體路徑</div>
+                <div class="project-title"><span data-lang-zh>影像辨識之藍芽車 App</span><span data-lang-en>Android App for Bluetooth Controlled Car</span></div>
+                <div class="project-desc" data-lang-zh>開發 Android App 以手機鏡頭進行物件辨識，並依此透過藍芽控制車體路徑</div>
+                <div class="project-desc" data-lang-en>Developed an Android App using the smartphone camera for object recognition to control the vehicle's path via Bluetooth.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">全差動運算放大器設計</div>
-                <div class="project-desc">設計元件參數以達到要求規格，並運用 SPICE 分析模擬驗證，平衡放大倍率與能耗</div>
+                <div class="project-title"><span data-lang-zh>全差動運算放大器設計</span><span data-lang-en>Two-Stage Fully Differential Operational Amplifier</span></div>
+                <div class="project-desc" data-lang-zh>設計元件參數以達到要求規格，並運用 SPICE 分析模擬驗證，平衡放大倍率與能耗</div>
+                <div class="project-desc" data-lang-en>Designed component parameters to meet specifications and used SPICE for simulation and verification, balancing amplification gain and energy consumption.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">警車控制器 FPGA 數位電路設計</div>
-                <div class="project-desc">在 FPGA 上開發警車控制器的數位電路，包含電動車體行進、警報聲與警示燈之控制</div>
+                <div class="project-title"><span data-lang-zh>警車控制器 FPGA 數位電路設計</span><span data-lang-en>Digital Circuit Design for Police Car Controller on FPGA</span></div>
+                <div class="project-desc" data-lang-zh>在 FPGA 上開發警車控制器的數位電路，包含電動車體行進、警報聲與警示燈之控制</div>
+                <div class="project-desc" data-lang-en>Developed a digital circuit for a police car controller on FPGA, including control for electric vehicle movement, siren, and warning lights.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">高空風力發電機儲能裝置設計</div>
-                <div class="project-desc">設計風機機構，透過大輪徑圓盤、棘輪與雙風箏回位機構來改善轉矩、逆轉與回收能耗</div>
+                <div class="project-title"><span data-lang-zh>高空風力發電機儲能裝置設計</span><span data-lang-en>Design of Airborne Wind Energy Storage Device</span></div>
+                <div class="project-desc" data-lang-zh>設計風機機構，透過大輪徑圓盤、棘輪與雙風箏回位機構來改善轉矩、逆轉與回收能耗</div>
+                <div class="project-desc" data-lang-en>Designed a wind turbine mechanism utilizing a large-diameter disk, ratchet, and dual-kite return mechanism to improve torque, prevent reverse rotation, and recover energy consumption.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">樂高主題物件機械製圖設計</div>
-                <div class="project-desc">設計可變形的車體模型，利用 3D 製圖軟體繪製各零件，並模擬組裝驗證</div>
+                <div class="project-title"><span data-lang-zh>樂高主題物件機械製圖設計</span><span data-lang-en>LEGO Mechanical Drawing and Design</span></div>
+                <div class="project-desc" data-lang-zh>設計可變形的車體模型，利用 3D 製圖軟體繪製各零件，並模擬組裝驗證</div>
+                <div class="project-desc" data-lang-en>Designed a transformable vehicle model, drew components using 3D modeling software, and performed assembly simulation for verification.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">多機協同之服務機器人調度策略</div>
-                <div class="project-desc">將 k-server problem 的演算法實作在調度於同一場域之多台服務機器人的決策上</div>
+                <div class="project-title"><span data-lang-zh>多機協同之服務機器人調度策略</span><span data-lang-en>Multi-Robot Coordinated Dispatch Strategy for Service Robots</span></div>
+                <div class="project-desc" data-lang-zh>將 k-server problem 的演算法實作在調度於同一場域之多台服務機器人的決策上</div>
+                <div class="project-desc" data-lang-en>Implemented algorithms for the k-server problem in decision-making for dispatching multiple service robots within the same field.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">meArm機械手臂實作</div>
-                <div class="project-desc">以雷射切割壓克力機構件、微控制器、搖桿及四顆伺服馬達，自製桌上型雙軸機械手臂</div>
+                <div class="project-title"><span data-lang-zh>meArm機械手臂實作</span><span data-lang-en>meArm Robotic Arm Implementation</span></div>
+                <div class="project-desc" data-lang-zh>以雷射切割壓克力機構件、微控制器、搖桿及四顆伺服馬達，自製桌上型雙軸機械手臂</div>
+                <div class="project-desc" data-lang-en>Built a desktop 2-axis robotic arm using laser-cut acrylic mechanical parts, microcontrollers, joysticks, and four servo motors.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">兩輪直立式平衡車實作</div>
-                <div class="project-desc">以三軸陀螺儀與加速度計感測車身傾角，透過 PID 控制自製雙輪車前後移動以達平衡</div>
+                <div class="project-title"><span data-lang-zh>兩輪直立式平衡車實作</span><span data-lang-en>Two-Wheeled Upright Balancing Robot Implementation</span></div>
+                <div class="project-desc" data-lang-zh>以三軸陀螺儀與加速度計感測車身傾角，透過 PID 控制自製雙輪車前後移動以達平衡</div>
+                <div class="project-desc" data-lang-en>Sensed vehicle body tilt using a 3-axis gyroscope and accelerometer, and maintained balance by moving the two-wheeled vehicle forward and backward via PID control.</div>
             </div>
 
             <div class="project-simple">
-                <div class="project-title">RepRap 3D印表機實作</div>
-                <div class="project-desc">基於 RepRap 專案，自製一台是能夠自我複製，列印出大部分自身零件的 3D 印表機</div>
+                <div class="project-title"><span data-lang-zh>RepRap 3D印表機實作</span><span data-lang-en>RepRap 3D Printer Implementation</span></div>
+                <div class="project-desc" data-lang-zh>基於 RepRap 專案，自製一台是能夠自我複製，列印出大部分自身零件的 3D 印表機</div>
+                <div class="project-desc" data-lang-en>Based on the RepRap project, built a 3D printer capable of self-replicating and printing most of its own components.</div>
             </div>
         </div>
     </section>
+
+    <script>
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('lang') || 'zh-TW';
+            const newLang = currentLang === 'zh-TW' ? 'en' : 'zh-TW';
+            html.setAttribute('lang', newLang);
+            localStorage.setItem('preferredLang', newLang);
+            updateToggleButton(newLang);
+        }
+
+        function updateToggleButton(lang) {
+            const zhSpan = document.getElementById('lang-zh');
+            const enSpan = document.getElementById('lang-en');
+            if (lang === 'en') {
+                zhSpan.classList.remove('active');
+                enSpan.classList.add('active');
+            } else {
+                zhSpan.classList.add('active');
+                enSpan.classList.remove('active');
+            }
+        }
+
+        // Apply saved language preference on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang') || 'zh-TW';
+            document.documentElement.setAttribute('lang', savedLang);
+            updateToggleButton(savedLang);
+        });
+    </script>
 </body>
 </html>
