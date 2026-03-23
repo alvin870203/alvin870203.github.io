@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>莊志淵 - 履歷</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 8mm 10mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', -apple-system, sans-serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            color: #222;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 8mm 10mm;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 8pt;
+            padding-bottom: 6pt;
+            border-bottom: 2pt solid #1e40af;
+        }
+
+        h1 {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #1e3a5f;
+            margin-bottom: 2pt;
+        }
+
+        h1 span {
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+
+        .portfolio {
+            font-size: 9pt;
+            color: #1e40af;
+            margin-bottom: 4pt;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 6pt;
+            font-size: 8.5pt;
+            color: #444;
+        }
+
+        .contact-row a {
+            display: flex;
+            align-items: center;
+            gap: 3pt;
+            color: #444;
+            text-decoration: none;
+        }
+
+        .contact-row svg {
+            width: 10pt;
+            height: 10pt;
+            fill: #1e40af;
+        }
+
+        .contact-row .sep {
+            color: #ccc;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 6pt;
+        }
+
+        h2 {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #1e40af;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: 1pt solid #cbd5e1;
+            padding-bottom: 2pt;
+            margin-bottom: 5pt;
+        }
+
+        /* Entry items */
+        .entry {
+            margin-bottom: 5pt;
+        }
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 6pt;
+        }
+
+        .entry-title {
+            font-weight: 600;
+            font-size: 10pt;
+            color: #1a1a1a;
+        }
+
+        .entry-date {
+            font-size: 9pt;
+            color: #1e40af;
+            font-weight: 500;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .entry-details {
+            margin-left: 8pt;
+            margin-top: 1pt;
+            font-size: 9pt;
+            color: #444;
+            border-left: 2pt solid #e2e8f0;
+            padding-left: 6pt;
+        }
+
+        .entry-details p {
+            margin-bottom: 0;
+        }
+
+        /* Publications */
+        .publication {
+            font-size: 9pt;
+            margin-bottom: 2pt;
+            padding-left: 18pt;
+            text-indent: -18pt;
+            line-height: 1.25;
+        }
+
+        .publication em {
+            font-style: italic;
+        }
+
+        .publication strong {
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3pt 12pt;
+        }
+
+        .project-item {
+            font-size: 9pt;
+            padding: 2pt 0;
+            border-bottom: 1pt dotted #e2e8f0;
+        }
+
+        .project-title {
+            font-weight: 600;
+            font-size: 9pt;
+            color: #1a1a1a;
+        }
+
+        .project-desc {
+            color: #555;
+            font-size: 8.5pt;
+            margin-top: 1pt;
+            line-height: 1.2;
+        }
+
+        .project-full {
+            margin-bottom: 4pt;
+            padding-bottom: 3pt;
+            border-bottom: 1pt dotted #e2e8f0;
+        }
+
+        .project-full:last-of-type {
+            border-bottom: none;
+        }
+
+        .project-full .project-title {
+            font-size: 10pt;
+            color: #1e3a5f;
+        }
+
+        .project-full .project-desc {
+            font-size: 9pt;
+            margin-left: 8pt;
+            margin-top: 1pt;
+            color: #444;
+            line-height: 1.25;
+        }
+
+        /* Utility */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2pt 16pt;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>莊志淵 <span>Chih-Yuan Chuang</span></h1>
+    <div class="portfolio"><a href="https://alvin870203.github.io/" target="_blank">alvin870203.github.io</a></div>
+    <div class="contact-row">
+        <a href="mailto:alvin870203@gmail.com"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a>
+        <span class="sep">|</span>
+        <a href="https://github.com/alvin870203" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+        <span class="sep">|</span>
+        <a href="https://linkedin.com/in/alvin-chih-yuan-chuang-738412241" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+        <span class="sep">|</span>
+        <a href="https://orcid.org/0000-0002-1790-8707" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>ORCID</a>
+    </div>
+</header>
+
+<section id="education">
+    <h2>學歷</h2>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">碩士：國立台灣大學 電機工程學系</span>
+            <span class="entry-date">2021~2022</span>
+        </div>
+        <div class="entry-details">
+            <p>GPA：4.02 ｜ 指導教授：傅立成</p>
+            <p>畢業論文：透過語言、語音和視覺之多模態線索評估思覺失調之症狀嚴重程度</p>
+        </div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">學士：國立清華大學 動力機械工程學系</span>
+            <span class="entry-date">2016~2020</span>
+        </div>
+        <div class="entry-details">
+            <p>GPA：4.02 ｜ 指導教授：方維倫</p>
+            <p>畢業專題：垂直整合三軸近接與觸覺感測之微機電系統</p>
+        </div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">高中：國立臺灣師範大學附屬高級中學</span>
+            <span class="entry-date">2013~2015</span>
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <h2>工作經歷</h2>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">光寶科技 車用視覺軟體部門 演算法團隊負責人</span>
+            <span class="entry-date">2024~Present</span>
+        </div>
+        <div class="entry-details">
+            <p>帶領六人團隊開發多項創新車用視覺感知演算法</p>
+            <p>主持與清大/交大/成大的產學合作案</p>
+            <p>至歐美日向國際車廠進行技術拓展</p>
+            <p>申請並獲頒 <a href="https://www.ces.tech/ces-innovation-awards/2026/hazard-awareness/" target="_blank"><strong>CES 2026 Innovation Award</strong></a> 🏆</p>
+        </div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">光寶科技 車用視覺軟體部門 機器學習研究員</span>
+            <span class="entry-date">2022~2024</span>
+        </div>
+        <div class="entry-details">
+            <p>開發透過車內外鏡頭偵測車周及駕駛的深度學習模型</p>
+            <p>規劃實車資料收集的軟硬體設計</p>
+            <p>輕量化並部署深度學習模型至車用嵌入式系統</p>
+        </div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">光寶科技 海外暑期實習專案 自動控制工程師</span>
+            <span class="entry-date">2018</span>
+        </div>
+        <div class="entry-details">
+            <p>設計用於檢測鍵盤力學觸感的自動化機台</p>
+            <p>改善用於自動化鍵盤組裝的六軸機械手臂</p>
+        </div>
+    </div>
+</section>
+
+<section id="publications">
+    <h2>論文發表</h2>
+    <div class="publication">
+        [1] H. R. Liao, H. C. Chen, <strong>C. Y. Chuang</strong>, J. S. Chen, V. M. Shivanna, and J. I. Guo, "A semi-supervised instance segmentation training model based on refined model distillation framework," <em>IEEE Access</em>, under review, 2026.
+    </div>
+    <div class="publication">
+        [2] Y. S. Ni, C. C. Tsai, J. S. Lin, H. P. Meng, P. C. Hu, J. S. Chen, K. H. Lin, <strong>C. Y. Chuang</strong>, and J. I. Guo, "Summary of the 2023 PAIR-LITEON competition: Embedded AI object detection model design contest on fish-eye around-view cameras," in <em>Proc. 5th ACM Int. Conf. Multimedia Asia</em>, Tainan, Taiwan, 2024, Art. no. 113.
+    </div>
+    <div class="publication">
+        [3] <strong>C. Y. Chuang</strong>, Y. T. Lin, C. C. Liu, L. E. Lee, H. Y. Chang, A. S. Liu, S. H. Hung, and L. C. Fu, "Multimodal assessment of schizophrenia symptom severity from linguistic, acoustic and visual cues," <em>IEEE Trans. Neural Syst. Rehabil. Eng.</em>, vol. 31, pp. 3469–3479, 2023.
+    </div>
+    <div class="publication">
+        [4] B. J. Lin, Y. T. Lin, C. C. Liu, L. E. Lee, <strong>C. Y. Chuang</strong>, A. S. Liu, S. H. Hung, and L. C. Fu, "Mental status detection for schizophrenia patients via deep visual perception," <em>IEEE J. Biomed. Health Inform.</em>, vol. 26, no. 11, pp. 5704–5715, Nov. 2022.
+    </div>
+</section>
+
+<section id="patents">
+    <h2>專利</h2>
+    <div class="publication">
+        [1] T. C. Liu, <strong>C. Y. Chuang</strong>, C. N. Hsu, and J. S. Chen, "深度估計系統及其方法", <em>Taiwan Patent TWI915224B</em>, granted Feb. 11, 2026.
+    </div>
+    <div class="publication">
+        [2] <strong>C. Y. Chuang</strong>, H. M. Chang, J. S. Chen, and K. H. Lin, "Driving environment monitoring system and driving environment monitoring method thereof," <em>U.S. Patent US12444077B2</em>, granted Oct. 14, 2025.
+    </div>
+    <div class="publication">
+        [3] T. C. Liu, <strong>C. Y. Chuang</strong>, C. N. Hsu, and J. S. Chen, "深度估计系统及其方法", <em>Chinese Patent CN120953343A</em>, published Nov. 14, 2025.
+    </div>
+    <div class="publication">
+        [4] T. C. Liu, <strong>C. Y. Chuang</strong>, C. N. Hsu, and J. S. Chen, "Depth estimation system and method thereof," <em>U.S. Patent Application US20250349018A1</em>, published Nov. 13, 2025.
+    </div>
+    <div class="publication">
+        [5] <strong>C. Y. Chuang</strong>, H. M. Chang, J. S. Chen, and K. H. Lin, "行车环境监视系统及其行车环境监视方法", <em>Chinese Patent CN119190039A</em>, published Dec. 27, 2024.
+    </div>
+</section>
+
+<section id="talks">
+    <h2>演講</h2>
+    <div class="publication">
+        [1] <strong>C. Y. Chuang</strong>, "From disjointed perceptions to unified awareness for predictive safety," presented at <em>Auto.AI Europe 2025</em>, Berlin, Germany, Sep. 29–30, 2025. [<a href="https://www.youtube.com/watch?v=j031qckY8BU" target="_blank">Video</a>]
+    </div>
+</section>
+
+<section id="projects">
+    <h2>專案</h2>
+
+    <div class="project-full">
+        <div class="project-title">透過語言、語音和視覺之多模態線索評估思覺失調之症狀嚴重程度</div>
+        <div class="project-desc">設計透過 parameter-efficient fine-tuning 模組融合四個不同模態預訓練 Transformer 的框架，訓練在與台大醫院合作收集的患者會談影音，透過語意、語法、聲學、視覺表徵檢測其在各症狀量表之嚴重指數</div>
+    </div>
+
+    <div class="project-full">
+        <div class="project-title">垂直整合三軸近接與觸覺感測之微機電系統</div>
+        <div class="project-desc">利用 CMOS-MEMS 技術，設計 2×2 感應線圈陣列以實現三軸近接感測，並整合壓阻式電橋結構以進行觸覺力感測，達到單片垂直整合，縮小晶片面積，並下線台積電製程製造</div>
+    </div>
+
+    <div class="project-full">
+        <div class="project-title">具有自我學習能力之環景影像物件分割系統</div>
+        <div class="project-desc">透過自監督學習、圖資區域自動篩選與 Segment Anything 知識蒸餾技術，設計出一個半監督式車用魚眼影像分割模型，解決資料標注稀少、邊緣小物件難以捕捉與遮罩破碎等挑戰</div>
+    </div>
+
+    <div class="project-full">
+        <div class="project-title">異質雙目視覺深度估測系統</div>
+        <div class="project-desc">開發透過兩顆任意安裝位置且不同光學規格與色域的鏡頭，達到立體視覺深度估測的演算法，例如魚眼RGB鏡頭與一顆紅外線鏡頭，解除傳統方法對於相機共平面且同規格的限制</div>
+    </div>
+
+    <div class="project-full">
+        <div class="project-title">基於車內外鏡頭之駕駛危險意識感知系統</div>
+        <div class="project-desc">透過車內鏡頭偵測駕駛視線，結合車外環景鏡頭偵測周遭用路人碰撞風險，並追蹤時間軸資訊，判斷駕駛對車周危險的意識程度，以此減少先進駕駛輔助的誤作動與對於全場景的理解</div>
+    </div>
+
+    <div class="project-full">
+        <div class="project-title">基於電腦視覺之遠距駕駛心律偵測與分析</div>
+        <div class="project-desc">透過車內鏡頭偵測駕駛心率的深度學習模型，設計利用 test-time compute 克服雜訊，並優化多模態架構，使同一模型可適用於僅有 RGB 或 NIR 或 RGB-IR 雙模態的各種鏡頭組合</div>
+    </div>
+
+    <div class="projects-grid">
+        <div class="project-item">
+            <div class="project-title">具有自我學習能力之駕駛行為偵測系統</div>
+            <div class="project-desc">透過優化 Teacher-Student 架構的半監督訓練框架，並整合擴散模型生成影像進行資料擴充，解決紅外線駕駛行為影像中長尾分佈與異常類別樣本稀缺之挑戰</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">基於近紅外線影像之高精度駕駛視線偵測</div>
+            <div class="project-desc">以車內 NIR 鏡頭進行端到端駕駛視線估測，克服傳統視線估測因多階段前處理導致的累積誤差與高運算複雜度</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">車周多鏡頭相機姿態自動校正系統</div>
+            <div class="project-desc">透過純影像來自動校正車上所安裝的多顆鏡頭之位置及角度，以補償鏡頭因碰撞或震動而跑位之問題</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">魚眼鏡頭單目深度估測模型</div>
+            <div class="project-desc">開發能針對魚眼影像進行單目深度偵測的深度學習模型，且針對時間一致性與絕對深度優化</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">無鬼影之車周鏡頭環景影像縫合技術</div>
+            <div class="project-desc">透過車上安裝的多顆鏡頭縫合出車周全景影像，且消除縫合處因視角差異導致同一物件產生之重疊殘影</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">魚眼鏡頭髒汙檢測</div>
+            <div class="project-desc">開發能偵測車用魚眼鏡頭上之雨滴或泥污的輕量化電腦視覺演算法</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">基於深度學習偵測電源供應器內部結構設計異常</div>
+            <div class="project-desc">結合 Design-for-X 知識，實現電源供應器內部結構異常的自動化檢測，克服樣本稀缺挑戰</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">用於鍵盤測試的自動化觸覺檢測系統</div>
+            <div class="project-desc">開發自動化高通量的力學檢測機台，量測鍵盤所有按鈕組裝後的手感，免去人工品檢</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">直流馬達之最佳狀態空間控制</div>
+            <div class="project-desc">實作直流馬達狀態空間與積分控制，進行系統鑑別，並解決非線性及模型誤差挑戰</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">AI 情緒辨識 Android App</div>
+            <div class="project-desc">利用 TinyML 技術，使人臉情緒辨識模型能運行在行動裝置上，兼具計算效率與準確度</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">禾聯 IoT 智慧家電結合 LINE 之解決方案</div>
+            <div class="project-desc">與禾聯合作，將 LINE 與智慧家庭結合，學習使用者習慣，實時自動監測與控制各家電</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">自駕車系統中介軟體開發</div>
+            <div class="project-desc">於台南沙崙智駕場域之虛擬平台，設計並訓練自駕車系統，以通過多項路況模擬實測</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">跨源域少樣本深度學習技術</div>
+            <div class="project-desc">結合少樣本學習技術與 metric learning，提升影像辨識在少量資料訓練下的跨域泛化性能</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">提升 Vision Transformer 準確度與收斂速度</div>
+            <div class="project-desc">優化 ViT 訓練方法，整合多任務預測、metric learning 與 SAM，改善準確度與收斂時間</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">人臉識別於亞洲政治人物資料集</div>
+            <div class="project-desc">以 metric learning 優化人臉識別模型，訓練並測試在亞洲政治人物資料庫上，改善準確度</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">弈棋六軸機械手臂</div>
+            <div class="project-desc">設計演算法並控制達明公司的六軸機械手臂，使其能與人類對手自動下棋比賽</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">手勢辨識音樂撥放器於 STM32 微控制器</div>
+            <div class="project-desc">在 STM32 上，開發透過深度模型進行手勢辨識並可控制選單功能之音樂撥放器</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">影像辨識之藍芽車 App</div>
+            <div class="project-desc">開發 Android App 以手機鏡頭進行物件辨識，並依此透過藍芽控制車體路徑</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">全差動運算放大器設計</div>
+            <div class="project-desc">設計元件參數以達到要求規格，並運用 SPICE 分析模擬驗證，平衡放大倍率與能耗</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">警車控制器 FPGA 數位電路設計</div>
+            <div class="project-desc">在 FPGA 上開發警車控制器的數位電路，包含電動車體行進、警報聲與警示燈之控制</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">高空風力發電機儲能裝置設計</div>
+            <div class="project-desc">設計風機機構，透過大輪徑圓盤、棘輪與雙風箏回位機構來改善轉矩、逆轉與回收能耗</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">樂高主題物件機械製圖設計</div>
+            <div class="project-desc">設計可變形的車體模型，利用 3D 製圖軟體繪製各零件，並模擬組裝驗證</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">多機協同之服務機器人調度策略</div>
+            <div class="project-desc">將 k-server problem 的演算法實作在調度於同一場域之多台服務機器人的決策上</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">meArm機械手臂實作</div>
+            <div class="project-desc">以雷射切割壓克力機構件、微控制器、搖桿及四顆伺服馬達，自製桌上型雙軸機械手臂</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">兩輪直立式平衡車實作</div>
+            <div class="project-desc">以三軸陀螺儀與加速度計感測車身傾角，透過 PID 控制自製雙輪車前後移動以達平衡</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">RepRap 3D印表機實作</div>
+            <div class="project-desc">基於 RepRap 專案，自製一台是能夠自我複製，列印出大部分自身零件的 3D 印表機</div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
